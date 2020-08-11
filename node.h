@@ -11,6 +11,12 @@ struct Node {
 // Allocate and get a new node instance
 struct Node * node(int value);
 
+// Initialize a linked list from an array
+struct Node * list(int * arr, int size);
+
+// Dump the values in list
+void dump(struct Node ** dummy);
+
 // Get a node instance by index
 struct Node * get(struct Node ** dummy, int index);
 

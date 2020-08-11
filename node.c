@@ -1,5 +1,6 @@
-#include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "node.h"
 
 
@@ -9,6 +10,32 @@ struct Node * node(int value) {
     node -> value = value;
     node -> next = NULL;
     return node;
+}
+
+
+struct Node * list(int * arr, int size) {
+    struct Node * list;
+
+    for (size_t i = 0; i < size; i++) {
+        list -> next = node(arr[i]);
+    }
+
+    return list;
+}
+
+
+void dump(struct Node ** dummy) {
+    int count = 0;
+    struct Node * head = *dummy;
+
+    printf("{\n");
+
+    while (head -> next != NULL) {
+        printf("    [%d] => %d\n", count, head -> value);
+        head = head -> next;
+    }
+
+    printf("}\n");
 }
 
 
