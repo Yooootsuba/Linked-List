@@ -34,8 +34,24 @@ void insert(struct Node ** dummy, int index, int value) {
     struct Node * middle = node(value);
     struct Node * tail   = head -> next;
 
-    head  -> next = middle;
+    head   -> next = middle;
     middle -> next = tail;
+}
+
+
+void update(struct Node ** dummy, int index, int value) {
+    struct Node * head = get(dummy, index);
+    head -> value = value;
+}
+
+
+void delete(struct Node ** dummy, int index) {
+    struct Node * head   = get(dummy, index - 1);
+    struct Node * middle = head -> next;
+    struct Node * tail   = middle -> next;
+
+    free(middle);
+    head -> next = tail;
 }
 
 

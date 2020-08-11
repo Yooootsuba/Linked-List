@@ -20,17 +20,20 @@ int key(struct Node ** dummy, int index);
 // Insert a node between to list by index
 void insert(struct Node ** dummy, int index, int value);
 
+// Update a node's value by index
+void update(struct Node ** dummy, int index, int value);
+
+// Remove a node by index
+void delete(struct Node ** dummy, int index);
+
 // Kill list
 void kill(struct Node ** dummy);
 
 
 /*
-int update();
-int delete();
 int push();
 int pop();
 int count();
-
 */
 
 
