@@ -21,3 +21,19 @@ struct Node * get(struct Node ** head, int index) {
 
     return dummy;
 }
+
+
+int key(struct Node ** head, int index) {
+    struct Node * dummy = get(head, index);
+    return dummy -> value;
+}
+
+
+void insert(struct Node ** head, int index, int value) {
+    struct Node * dummy  = get(head, index);
+    struct Node * middle = node(value);
+    struct Node * tail   = dummy -> next;
+
+    dummy  -> next = middle;
+    middle -> next = tail;
+}
