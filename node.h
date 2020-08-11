@@ -17,10 +17,25 @@ struct Node * get(struct Node ** dummy, int index);
 // Get the value of node by index
 int key(struct Node ** dummy, int index);
 
+// Get the value of head
+int head(struct Node ** dummy);
+
+// Get the value of tail
+int tail(struct Node ** dummy);
+
+// Get the size of list
+int count(struct Node ** dummy);
+
+// Add a node on the tail
+void push(struct Node ** dummy, int value);
+
+// Pop out the node on the tail
+int pop(struct Node ** dummy);
+
 // Insert a node between to list by index
 void insert(struct Node ** dummy, int index, int value);
 
-// Update a node's value by index
+// Update the value of node by index
 void update(struct Node ** dummy, int index, int value);
 
 // Remove a node by index
@@ -28,13 +43,6 @@ void delete(struct Node ** dummy, int index);
 
 // Kill list
 void kill(struct Node ** dummy);
-
-
-/*
-int push();
-int pop();
-int count();
-*/
 
 
 #endif

@@ -5,6 +5,7 @@
 
 struct Node * node(int value) {
     struct Node * node = malloc(sizeof(struct Node));
+    assert(node);
     node -> value = value;
     node -> next = NULL;
     return node;
@@ -26,6 +27,59 @@ struct Node * get(struct Node ** dummy, int index) {
 int key(struct Node ** dummy, int index) {
     struct Node * head = get(dummy, index);
     return head -> value;
+}
+
+
+int head(struct Node ** dummy) {
+    return (*dummy) -> value;
+}
+
+
+int tail(struct Node ** dummy) {
+    struct Node * head = *dummy;
+
+    while (head -> next != NULL) {
+        head = head -> next;
+    }
+
+    return head -> value;
+}
+
+
+int count(struct Node ** dummy) {
+    int count = 1;
+    struct Node * head = *dummy;
+
+    while (head -> next != NULL) {
+        count++;
+        head = head -> next;
+    }
+
+    return count;
+}
+
+
+void push(struct Node ** dummy, int value) {
+    struct Node * head = *dummy;
+
+    while (head -> next != NULL) {
+        head = head -> next;
+    }
+
+    head -> next = node(value);
+}
+
+
+int pop(struct Node ** dummy) {
+    struct Node * head = *dummy;
+
+    while (head -> next != NULL) {
+        head = head -> next;
+    }
+
+    int value = head -> value;
+    free(head);
+    return value;
 }
 
 
