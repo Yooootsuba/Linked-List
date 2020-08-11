@@ -7,20 +7,23 @@
 struct Node * node(int value) {
     struct Node * node = malloc(sizeof(struct Node));
     assert(node);
+
     node -> value = value;
-    node -> next = NULL;
+    node -> next = NULL;    
     return node;
 }
 
 
 struct Node * list(int * arr, int size) {
-    struct Node * list;
+    struct Node * list = node(arr[0]);
+    struct Node * head = list;
 
-    for (size_t i = 0; i < size; i++) {
+    for (size_t i = 1; i < size; i++) {
         list -> next = node(arr[i]);
+        list = list -> next;
     }
 
-    return list;
+    return head;
 }
 
 
@@ -30,7 +33,8 @@ void dump(struct Node ** dummy) {
 
     printf("{\n");
 
-    while (head -> next != NULL) {
+    while (head != NULL) {
+        count++;
         printf("    [%d] => %d\n", count, head -> value);
         head = head -> next;
     }
