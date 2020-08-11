@@ -4,47 +4,47 @@
 
 
 struct Node * node(int value) {
-    struct Node * dummy = malloc(sizeof(struct Node));
-    dummy -> value = value;
-    dummy -> next = NULL;
-    return dummy;
+    struct Node * node = malloc(sizeof(struct Node));
+    node -> value = value;
+    node -> next = NULL;
+    return node;
 }
 
 
-struct Node * get(struct Node ** head, int index) {
-    struct Node * dummy = *head;
+struct Node * get(struct Node ** dummy, int index) {
+    struct Node * head = *dummy;
 
     for (size_t i = 0; i < index; i++) {
-        assert(dummy -> next);
-        dummy = dummy -> next;
+        assert(head -> next);
+        head = head -> next;
     }
 
-    return dummy;
+    return head;
 }
 
 
-int key(struct Node ** head, int index) {
-    struct Node * dummy = get(head, index);
-    return dummy -> value;
+int key(struct Node ** dummy, int index) {
+    struct Node * head = get(dummy, index);
+    return head -> value;
 }
 
 
-void insert(struct Node ** head, int index, int value) {
-    struct Node * dummy  = get(head, index);
+void insert(struct Node ** dummy, int index, int value) {
+    struct Node * head   = get(dummy, index);
     struct Node * middle = node(value);
-    struct Node * tail   = dummy -> next;
+    struct Node * tail   = head -> next;
 
-    dummy  -> next = middle;
+    head  -> next = middle;
     middle -> next = tail;
 }
 
 
-void kill(struct Node ** head) {
-    struct Node * killer, * dummy  = *head;
+void kill(struct Node ** dummy) {
+    struct Node * killer, * head  = *dummy;
 
-    while (dummy != NULL) {
-        killer = dummy;
-        dummy = dummy -> next;
+    while (head != NULL) {
+        killer = head;
+        head = head -> next;
         free(killer);
     }
 }

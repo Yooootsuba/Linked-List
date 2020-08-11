@@ -12,16 +12,17 @@ struct Node {
 struct Node * node(int value);
 
 // Get a node instance by index
-struct Node * get(struct Node ** head, int index);
+struct Node * get(struct Node ** dummy, int index);
 
 // Get the value of node by index
-int key(struct Node ** head, int index);
+int key(struct Node ** dummy, int index);
 
 // Insert a node between to list by index
-void insert(struct Node ** head, int index, int value);
+void insert(struct Node ** dummy, int index, int value);
 
 // Kill list
-void kill(struct Node ** head);
+void kill(struct Node ** dummy);
+
 
 /*
 int update();
