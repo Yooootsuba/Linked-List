@@ -37,3 +37,14 @@ void insert(struct Node ** head, int index, int value) {
     dummy  -> next = middle;
     middle -> next = tail;
 }
+
+
+void kill(struct Node ** head) {
+    struct Node * killer, * dummy  = *head;
+
+    while (dummy != NULL) {
+        killer = dummy;
+        dummy = dummy -> next;
+        free(killer);
+    }
+}

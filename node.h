@@ -20,6 +20,8 @@ int key(struct Node ** head, int index);
 // Insert a node between to list by index
 void insert(struct Node ** head, int index, int value);
 
+// Kill list
+void kill(struct Node ** head);
 
 /*
 int update();
