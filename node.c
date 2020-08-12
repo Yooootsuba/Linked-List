@@ -70,7 +70,7 @@ void dump(struct Node ** list) {
     int count = 0;
     struct Node * head = *list;
 
-    printf("{\n");
+    printf("\n{\n");
 
     while (head != NULL) {
         count++;
@@ -78,7 +78,7 @@ void dump(struct Node ** list) {
         head = head -> next;
     }
 
-    printf("}\n");
+    printf("}\n\n");
 }
 
 
