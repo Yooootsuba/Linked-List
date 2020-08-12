@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdbool.h>
 #include "node.h"
 
 
@@ -27,9 +28,27 @@ struct Node * list(int * arr, int size) {
 }
 
 
-void dump(struct Node ** dummy) {
+void sort(struct Node ** list, bool reverse) {
+
+}
+
+
+int count(struct Node ** list) {
+    int count = 1;
+    struct Node * head = *list;
+
+    while (head -> next != NULL) {
+        count++;
+        head = head -> next;
+    }
+
+    return count;
+}
+
+
+void dump(struct Node ** list) {
     int count = 0;
-    struct Node * head = *dummy;
+    struct Node * head = *list;
 
     printf("{\n");
 
@@ -43,8 +62,8 @@ void dump(struct Node ** dummy) {
 }
 
 
-struct Node * get(struct Node ** dummy, int index) {
-    struct Node * head = *dummy;
+struct Node * get(struct Node ** list, int index) {
+    struct Node * head = *list;
 
     for (size_t i = 0; i < index; i++) {
         assert(head -> next);
@@ -55,19 +74,19 @@ struct Node * get(struct Node ** dummy, int index) {
 }
 
 
-int key(struct Node ** dummy, int index) {
-    struct Node * head = get(dummy, index);
+int key(struct Node ** list, int index) {
+    struct Node * head = get(list, index);
     return head -> value;
 }
 
 
-int head(struct Node ** dummy) {
-    return (*dummy) -> value;
+int head(struct Node ** list) {
+    return (*list) -> value;
 }
 
 
-int tail(struct Node ** dummy) {
-    struct Node * head = *dummy;
+int tail(struct Node ** list) {
+    struct Node * head = *list;
 
     while (head -> next != NULL) {
         head = head -> next;
@@ -77,31 +96,18 @@ int tail(struct Node ** dummy) {
 }
 
 
-int count(struct Node ** dummy) {
-    int count = 1;
-    struct Node * head = *dummy;
-
-    while (head -> next != NULL) {
-        count++;
-        head = head -> next;
-    }
-
-    return count;
-}
-
-
-void front(struct Node ** dummy, int value) {
-    struct Node middle = *dummy;
-    struct Node head   = node(value);
-    struct Node tail   = middle -> next;
+void front(struct Node ** list, int value) {
+    struct Node * middle = *list;
+    struct Node * head   = node(value);
+    struct Node * tail   = middle -> next;
 
     head   -> next = middle;
     middle -> next = tail;
 }
 
 
-void push(struct Node ** dummy, int value) {
-    struct Node * head = *dummy;
+void push(struct Node ** list, int value) {
+    struct Node * head = *list;
 
     while (head -> next != NULL) {
         head = head -> next;
@@ -111,8 +117,8 @@ void push(struct Node ** dummy, int value) {
 }
 
 
-int pop(struct Node ** dummy) {
-    struct Node * head = *dummy;
+int pop(struct Node ** list) {
+    struct Node * head = *list;
 
     while (head -> next != NULL) {
         head = head -> next;
@@ -124,8 +130,8 @@ int pop(struct Node ** dummy) {
 }
 
 
-void insert(struct Node ** dummy, int index, int value) {
-    struct Node * head   = get(dummy, index);
+void insert(struct Node ** list, int index, int value) {
+    struct Node * head   = get(list, index);
     struct Node * middle = node(value);
     struct Node * tail   = head -> next;
 
@@ -134,26 +140,26 @@ void insert(struct Node ** dummy, int index, int value) {
 }
 
 
-void update(struct Node ** dummy, int index, int value) {
-    struct Node * head = get(dummy, index);
+void update(struct Node ** list, int index, int value) {
+    struct Node * head = get(list, index);
     head -> value = value;
 }
 
 
-void delete(struct Node ** dummy, int index) {
-    struct Node * killer = get(dummy, index);
+void delete(struct Node ** list, int index) {
+    struct Node * killer = get(list, index);
 
     for (size_t i = 0; i < index; i++) {
-        dummy = &((*dummy) -> next);
+        list = &((*list) -> next);
     }
 
-    *dummy = killer -> next;
+    *list = killer -> next;
     free(killer);
 }
 
 
-void kill(struct Node ** dummy) {
-    while (*dummy != NULL) {
-        delete(dummy, 0);
+void kill(struct Node ** list) {
+    while (*list != NULL) {
+        delete(list, 0);
     }
 }
