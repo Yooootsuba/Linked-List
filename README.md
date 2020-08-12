@@ -7,7 +7,7 @@ It's a singly linked list implementing in C
 1. Clone this project
 
 ```sh
-$ clone https://github.com/Yooootsuba/Linked-List.git
+$ git clone https://github.com/Yooootsuba/Linked-List.git
 ```
 
 2. Change the directory
