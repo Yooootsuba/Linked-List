@@ -9,7 +9,7 @@ struct Node * node(int value) {
     assert(node);
 
     node -> value = value;
-    node -> next = NULL;    
+    node -> next = NULL;
     return node;
 }
 
@@ -131,12 +131,14 @@ void update(struct Node ** dummy, int index, int value) {
 
 
 void delete(struct Node ** dummy, int index) {
-    struct Node * head   = get(dummy, index - 1);
-    struct Node * middle = head -> next;
-    struct Node * tail   = middle -> next;
+    struct Node * killer = get(dummy, index);
 
-    free(middle);
-    head -> next = tail;
+    for (size_t i = 0; i < index; i++) {
+        dummy = &((*dummy) -> next);
+    }
+
+    *dummy = killer -> next;
+    free(killer);
 }
 
 
