@@ -121,6 +121,7 @@ void front(struct Node ** list, int value) {
     struct Node * head   = node(value);
     struct Node * tail   = middle -> next;
 
+    *list = head;
     head   -> next = middle;
     middle -> next = tail;
 }
