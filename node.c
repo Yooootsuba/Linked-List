@@ -143,11 +143,7 @@ void delete(struct Node ** dummy, int index) {
 
 
 void kill(struct Node ** dummy) {
-    struct Node * killer, * head  = *dummy;
-
-    while (head != NULL) {
-        killer = head;
-        head = head -> next;
-        free(killer);
+    while (*dummy != NULL) {
+        delete(dummy, 0);
     }
 }
