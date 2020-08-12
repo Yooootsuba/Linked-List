@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <assert.h>
 #include <stdbool.h>
 #include "node.h"
@@ -28,8 +29,27 @@ struct Node * list(int * arr, int size) {
 }
 
 
-void sort(struct Node ** list, bool reverse) {
+void swap(struct Node * a, struct Node * b) {
+    a -> value = a -> value ^ b -> value;
+    b -> value = a -> value ^ b -> value;
+    a -> value = a -> value ^ b -> value;
+}
 
+
+void sort(struct Node ** list, bool reverse) {
+    int size = count(list);
+
+    for (size_t i = 0; i < size - 1; i++) {
+        struct Node * a = *list;
+        struct Node * b = a -> next;
+        for (size_t j = 0; j < size - 1; j++) {
+            if (a -> value > b -> value != reverse) {
+                swap(a, b);
+            }
+            a = a -> next;
+            b = b -> next;
+        }
+    }
 }
 
 

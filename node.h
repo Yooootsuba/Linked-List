@@ -17,6 +17,9 @@ struct Node * node(int value);
 // Initialize a linked list from an array
 struct Node * list(int * arr, int size);
 
+// Exchange the values of a and b
+void swap(struct Node * a, struct Node * b);
+
 // Sort list
 void sort(struct Node ** list, bool reverse);
 
