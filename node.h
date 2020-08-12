@@ -32,6 +32,9 @@ int tail(struct Node ** dummy);
 // Get the size of list
 int count(struct Node ** dummy);
 
+// Add a node on the head 
+void front(struct Node ** dummy, int value);
+
 // Add a node on the tail
 void push(struct Node ** dummy, int value);
 

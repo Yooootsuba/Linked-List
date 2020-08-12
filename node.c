@@ -90,6 +90,16 @@ int count(struct Node ** dummy) {
 }
 
 
+void front(struct Node ** dummy, int value) {
+    struct Node middle = *dummy;
+    struct Node head   = node(value);
+    struct Node tail   = middle -> next;
+
+    head   -> next = middle;
+    middle -> next = tail;
+}
+
+
 void push(struct Node ** dummy, int value) {
     struct Node * head = *dummy;
 
