@@ -1,8 +1,8 @@
-# Linked List
+## Linked List
 
 It's a singly linked list implementing in C
 
-## Build and Run
+# Build and Run
 
 1. Clone this project
 
@@ -28,6 +28,6 @@ $ make
 $ ./main.out
 ```
 
-## License
+# License
 
 No License
